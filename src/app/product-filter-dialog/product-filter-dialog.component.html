@@ -1,0 +1,42 @@
+<h3>Add a Filter</h3>
+
+<form [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Column name</mat-label>
+    <mat-select formControlName="columnName">
+      <mat-option *ngFor="let columnName of dictionaryService.columnNames" [value]="columnName.id">
+        {{columnName.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Operator</mat-label>
+    <mat-select formControlName="operator">
+      <mat-option
+        *ngFor="let operator of dictionaryService.operators" [value]="operator.id"
+        [disabled]="isOperatorOptionDisabled(operator)"
+      >
+        {{operator.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Value</mat-label>
+    <input formControlName="value" matInput type="text" autocomplete="off">
+  </mat-form-field>
+
+  <div class="product-filter-dialog-actions">
+    <button mat-flat-button matDialogClose type="button">Cancel</button>
+    <button
+      [matDialogClose]="form.value"
+      [disabled]="form.invalid"
+      mat-flat-button
+      color="primary"
+      type="submit"
+    >
+      Add
+    </button>
+  </div>
+</form>

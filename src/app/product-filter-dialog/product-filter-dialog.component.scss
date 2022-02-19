@@ -1,0 +1,22 @@
+:host {
+  width: 25rem;
+  display: block;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.product-filter-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  button:not(:last-child) {
+    margin-right: 1rem;
+  }
+}

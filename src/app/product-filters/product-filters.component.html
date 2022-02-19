@@ -1,0 +1,31 @@
+<div class="filters-head">
+  <h2>Filters</h2>
+  <button
+    mat-icon-button
+    color="primary"
+    matTooltip="Add filter"
+    (click)="openFilterDialog()"
+    type="button"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<ul>
+  <li *ngFor="let filter of filters">
+    <span>
+      <strong>{{filter.columnName | dictionaryItemName: dictionaryService.columnNames}}</strong>
+      {{filter.operator | dictionaryItemName: dictionaryService.operators | lowercase}}
+      <strong>{{filter.value}}</strong>
+    </span>
+    <button
+      mat-icon-button
+      color="warn"
+      matTooltip="Delete filter"
+      (click)="deleteFilter(filter)"
+      type="button"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </li>
+</ul>
