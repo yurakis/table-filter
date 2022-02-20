@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -10,12 +10,10 @@ import { Product } from '../_shared/product.model';
   styleUrls: ['./product-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductListComponent implements AfterViewInit {
+export class ProductListComponent {
   public readonly displayedColumns: Array<keyof Product> = ['product_name', 'product_desc', 'category', 'price'];
 
   public readonly dataSource = new MatTableDataSource<Product>([]);
-
-  @ViewChild(MatPaginator) public paginator?: MatPaginator;
 
   @Input() set products(value: Product[] | null) {
     if (value === null) {
@@ -25,7 +23,7 @@ export class ProductListComponent implements AfterViewInit {
     this.dataSource.data = value;
   }
 
-  public ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator!;
+  @ViewChild(MatPaginator) public set paginator(value: MatPaginator) {
+    this.dataSource.paginator = value;
   }
 }

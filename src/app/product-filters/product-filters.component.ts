@@ -15,7 +15,9 @@ import { DictionaryService } from '../_shared/dictionary.service';
 })
 export class ProductFiltersComponent {
   @Output() public readonly filtersChange = new EventEmitter<ProductFilter[]>()
+
   public form?: FormGroup;
+
   public filters: ProductFilter[] = [];
 
   constructor(

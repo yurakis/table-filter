@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { takeWhile } from 'rxjs';
 
 import { DictionaryService } from '../_shared/dictionary.service';
 import { DictionaryItem } from '../_shared/dictionary.model';
 import { ProductFilterOperator } from '../_shared/product.model';
-import { takeWhile } from 'rxjs';
 
 @Component({
   templateUrl: './product-filter-dialog.component.html',
@@ -13,6 +13,7 @@ import { takeWhile } from 'rxjs';
 })
 export class ProductFilterDialogComponent implements OnInit, OnDestroy {
   public form!: FormGroup;
+
   private isComponentDestroyed = false;
 
   constructor(
